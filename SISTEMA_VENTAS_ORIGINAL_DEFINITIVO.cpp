@@ -271,8 +271,6 @@ void InicializarProductos() {
     productos.push_back(producto25);
     
     
-
-    
     //Jalar los datos de una base de datos 
     //(ULR LAptop/ EXCEL =   )
     
@@ -294,7 +292,7 @@ void ListaClientes() {
 
     }
     cout << "Presione cualquier tecla para continuar." << endl;
-    cin.get();
+    cin.ignore();
     cin.get();
 
 }
@@ -311,9 +309,46 @@ void AgregarCliente() {
     clientes.push_back(nuevoCliente);
     cout << "Cliente agregado exitosamente." << endl;
     cout << "Presione cualquier tecla para continuar." << endl;
-    cin.get();
+    cin.ignore();
     cin.get();
 }
+ void  cotizar() {
+ 	//declaracion de variable
+ 	double precioUnitario;
+    int cantidad;
+    double subtotal, impuestos, total;
+    double porcentajeImpuestos = 0.16;  // Por ejemplo, impuestos del 16%
+
+    // Solicitar datos al usuario
+    cout << "Ingrese el precio unitario del producto: ";
+    cin >> precioUnitario;
+
+    cout << "Ingrese la cantidad de productos: ";
+    cin >> cantidad;
+
+    // Calcular subtotal
+    subtotal = precioUnitario * cantidad;
+
+    // Calcular impuestos
+    impuestos = subtotal * porcentajeImpuestos;
+
+    // Calcular total
+    total = subtotal + impuestos;
+
+    // Mostrar resultados
+    cout << "\nResumen de la cotizacion:" << endl;
+    cout << "--------------------------" << endl;
+    cout << "Precio unitario: $" << precioUnitario << endl;
+    cout << "Cantidad: " << cantidad << endl;
+    cout << "Subtotal: $" << subtotal << endl;
+    cout << "Impuestos (16%): $" << impuestos << endl;
+    cout << "--------------------------" << endl;
+    cout << "TOTAL: $" << total << endl;
+    
+    cout << "Presione cualquier tecla para continuar." << endl;
+    cin.ignore();
+    cin.get();
+ }
 
 void GestionarClientes() {
     cout << "Gestion de Clientes:" << endl;
@@ -322,6 +357,7 @@ void GestionarClientes() {
     cout << "Seleccione una opcion: ";
     int opcion;
     cin >> opcion;
+    cin.ignore();//limpiar buffer
     switch (opcion) {
         case 1:
             ListaClientes();
@@ -354,7 +390,7 @@ void ListarProductos() {
 
     }
     cout << "Presione cualquier tecla para continuar." << endl;
-    cin.get();
+    cin.ignore();
     cin.get();
 }
 
@@ -374,7 +410,7 @@ void AgregarProducto() {
     productos.push_back(nuevoProducto);
     cout << "Producto agregado exitosamente." << endl;
     cout << "Presione cualquier tecla para continuar." << endl;
-    cin.get();
+    cin.ignore();
     cin.get();
 }
 
@@ -385,6 +421,7 @@ void GestionarProductos() {
     cout << "Seleccione una opcion: ";
     int opcion;
     cin >> opcion;
+    cin.ignore();//limpiar buffer
     switch (opcion) {
         case 1:
             ListarProductos();
@@ -401,7 +438,7 @@ void GestionarProductos() {
 void MostrarPedido() {
     cout << "Funcionalidad de realizar un pedido no implementada." << endl;
     cout << "Presione cualquier tecla para continuar." << endl;
-    cin.get();
+    cin.ignore();
     cin.get();
 }
 
@@ -417,29 +454,30 @@ void MostrarVentas() {
 }
 
 void MostrarMenuPrincipal() {
-    // Obtener el tamaño de la consola
+    // Obtener el tamaÃ±o de la consola
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     int anchoConsola;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     anchoConsola = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 
-    // El texto principal del menú
+    // El texto principal del menÃº
     const char* menuTitle = "__________Menu:_________";
     int titleLength = strlen(menuTitle);
     
-    // Calcular el espacio de relleno para centrar el título del menú
+    // Calcular el espacio de relleno para centrar el tÃ­tulo del menÃº
     int padding = (anchoConsola - titleLength) / 2;
     string paddingSpaces = string(padding, ' ');
 
-    // Imprimir el título del menú centrado
+    // Imprimir el tÃ­tulo del menÃº centrado
     cout << paddingSpaces << menuTitle << endl;
 
-    // Imprimir las opciones del menú con el mismo padding para alinear a la izquierda
+    // Imprimir las opciones del menÃº con el mismo padding para alinear a la izquierda
     cout << paddingSpaces << "1. Clientes" << endl;
     cout << paddingSpaces << "2. Productos" << endl;
     cout << paddingSpaces << "3. Realizar Pedido" << endl;
     cout << paddingSpaces << "4. Ventas" << endl;
-    cout << paddingSpaces << "5. Salir" << endl;
+    cout << paddingSpaces << "5. cotizacion" << endl;
+    cout << paddingSpaces << "6. Salir" << endl;
     cout << paddingSpaces << "Seleccione una opcion, por favor: ";
 }
 
@@ -451,6 +489,7 @@ int main() {
     bool autenticado = false;
 
     while (!autenticado) {
+    	system("CLS");
         cout << "Por favor, inicie sesion." << endl;
         cout << "Usuario: ";
         string usuario;
@@ -478,10 +517,11 @@ int main() {
     bool salir = false;
 
     while (!salir) {
+    	system("CLS");
         MostrarMenuPrincipal();
-
         char opcion;
         cin >> opcion;
+        cin.ignore();//limpias buffer
         cout << endl;
 
         switch (opcion) {
@@ -498,6 +538,9 @@ int main() {
                 MostrarVentas();
                 break;
             case '5':
+                cotizar();
+                break;
+            case '6':
                 salir = true;
                 break;
             default:
@@ -505,7 +548,5 @@ int main() {
                 break;
         }
     }
-
     return 0;
 }
-
