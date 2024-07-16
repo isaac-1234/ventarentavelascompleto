@@ -1,10 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <windows.h>
-#include <vector>
 #include <string>
-#include <iomanip> 
-//LIBRERIA PARA JALAR LOS DATOS EN EXCEL
+#include <vector>
+#include <iomanip>
 
 using namespace std;
 
@@ -13,7 +11,12 @@ public:
     int id;
     string nombre;
     string apellido;
+    string domicilio;
+    string municipio;
+    string estado;
     string telefono;
+    string RFC;
+    string tipo;
 };
 
 class Producto {
@@ -21,9 +24,11 @@ public:
     string nombre;
     string origen;
     double precio;
-    int idConsecutivo;
     int disponibilidad;
-    string tipoRenta;
+    string tipo;
+    int idConsecutivo;
+    int cantidad;
+    double precioUnitario; // Añadido para cotización
 };
 
 class Venta {
@@ -33,520 +38,506 @@ public:
     Producto producto;
     int cantidad;
     double precioTotal;
+    string fecha;
+    string tiempo_entrega;
+    string RFC;
+    int id_pedido;
 };
 
-vector<Cliente> clientes;
-vector<Producto> productos;
-vector<Venta> ventas;
-int folio = 1;
-int proximoIdConsecutivo = 1;
-
-string usuarioAdmin = "isaac";
-string contrasenaAdmin = "123";
-
-void InicializarProductos() {
-    Producto producto1;
-    producto1.nombre = "Juego de 5 cirios/p";
-    producto1.origen = "Compra";
-    producto1.precio = 1450.00;
-    producto1.idConsecutivo = proximoIdConsecutivo++;
-    producto1.disponibilidad = 3;
-    producto1.tipoRenta = "RENTA";
-    productos.push_back(producto1);
-
-    Producto producto2;
-    producto2.nombre = "Juego de 10 cirios/p";
-    producto2.origen = "Compra";
-    producto2.precio = 2800.00;
-    producto2.idConsecutivo = proximoIdConsecutivo++;
-    producto2.disponibilidad = 3;
-    producto2.tipoRenta = "RENTA";
-    productos.push_back(producto2);
-    
-    Producto producto3;
-    producto3.nombre = "Juego de 15 cirios/p";
-    producto3.origen = "Compra";
-    producto3.precio = 4050;
-    producto3.idConsecutivo = proximoIdConsecutivo++;
-    producto3.disponibilidad = 3;
-    producto3.tipoRenta = "RENTA";
-    productos.push_back(producto3);
-
-    Producto producto4;
-    producto4.nombre = "Juego de 20 cirios/p";
-    producto4.origen = "Compra";
-    producto4.precio = 5200;
-    producto4.idConsecutivo = proximoIdConsecutivo++;
-    producto4.disponibilidad = 3;
-    producto4.tipoRenta = "RENTA";
-    productos.push_back(producto4);
-
-    Producto producto5;
-    producto5.nombre = "Juego de 25 cirios/p";
-    producto5.origen = "Compra";
-    producto5.precio = 6250;
-    producto5.idConsecutivo = proximoIdConsecutivo++;
-    producto5.disponibilidad = 3;
-    producto5.tipoRenta = "RENTA";
-    productos.push_back(producto5);
-
-    Producto producto6;
-    producto6.nombre = "Juego de 30 cirios/p";
-    producto6.origen = "Compra";
-    producto6.precio = 7200;
-    producto6.idConsecutivo = proximoIdConsecutivo++;
-    producto6.disponibilidad = 3;
-    producto6.tipoRenta = "RENTA";
-    productos.push_back(producto6);
-
-    Producto producto7;
-    producto7.nombre = "Juego de 35 cirios/p";
-    producto7.origen = "Compra";
-    producto7.precio = 8050;
-    producto7.idConsecutivo = proximoIdConsecutivo++;
-    producto7.disponibilidad = 3;
-    producto7.tipoRenta = "RENTA";
-    productos.push_back(producto7);
-
-    Producto producto8;
-    producto8.nombre = "Juego de 40 cirios/p";
-    producto8.origen = "Compra";
-    producto8.precio = 8800;
-    producto8.idConsecutivo = proximoIdConsecutivo++;
-    producto8.disponibilidad = 3;
-    producto8.tipoRenta = "RENTA";
-    productos.push_back(producto8);
-
-    Producto producto9;
-    producto9.nombre = "Juego de 45 cirios/p";
-    producto9.origen = "Compra";
-    producto9.precio = 9450;
-    producto9.idConsecutivo = proximoIdConsecutivo++;
-    producto9.disponibilidad = 3;
-    producto9.tipoRenta = "RENTA";
-    productos.push_back(producto9);
-
-    Producto producto10;
-    producto10.nombre = "Vela colgante/G";
-    producto10.origen = "WO";
-    producto10.precio = 28;
-    producto10.idConsecutivo = proximoIdConsecutivo++;
-    producto10.disponibilidad = 3;
-    producto10.tipoRenta = "RENTA";
-    productos.push_back(producto10);
-
-    Producto producto11;
-    producto11.nombre = "Vela colgante chica";
-    producto11.origen = "WO";
-    producto11.precio = 18;
-    producto11.idConsecutivo = proximoIdConsecutivo++;
-    producto11.disponibilidad = 3;
-    producto11.tipoRenta = "RENTA";
-    productos.push_back(producto11);
-
-    Producto producto12;
-    producto12.nombre = "Vela votivo/G (250ml/8.45oz)";
-    producto12.origen = "Stoco";
-    producto12.precio = 16;
-    producto12.idConsecutivo = proximoIdConsecutivo++;
-    producto12.disponibilidad = 3;
-    producto12.tipoRenta = "RENTA";
-    productos.push_back(producto12);
-
-    Producto producto13;
-    producto13.nombre = "Vela votivo/G Rell(250ml/8.45oz)";
-    producto13.origen = "WO";
-    producto13.precio = 13;
-    producto13.idConsecutivo = proximoIdConsecutivo++;
-    producto13.disponibilidad = 3;
-    producto13.tipoRenta = "RENTA";
-    productos.push_back(producto13);
-
-    Producto producto14;
-    producto14.nombre = "Vela votivo/ch (142ml/5.0oz)";
-    producto14.origen = "Stock";
-    producto14.precio = 14;
-    producto14.idConsecutivo = proximoIdConsecutivo++;
-    producto14.disponibilidad = 3;
-    producto14.tipoRenta = "RENTA";
-    productos.push_back(producto14);
-
-    Producto producto15;
-    producto15.nombre = "Vela votivo/ch Rell (142ml/5.0oz)";
-    producto15.origen = "WO";
-    producto15.precio = 11;
-    producto15.idConsecutivo = proximoIdConsecutivo++;
-    producto15.disponibilidad = 3;
-    producto15.tipoRenta = "RENTA";
-    productos.push_back(producto15);
-
-    Producto producto16;
-    producto16.nombre = "Vela votivo/G color (250ml/8.45oz)";
-    producto16.origen = "WO";
-    producto16.precio = 19;
-    producto16.idConsecutivo = proximoIdConsecutivo++;
-    producto16.disponibilidad = 3;
-    producto16.tipoRenta = "RENTA";
-    productos.push_back(producto16);
-
-    Producto producto17;
-    producto17.nombre = "Vela votivo/G Rell color (250ml/8.45oz)";
-    producto17.origen = "WO";
-    producto17.precio = 16;
-    producto17.idConsecutivo = proximoIdConsecutivo++;
-    producto17.disponibilidad = 3;
-    producto17.tipoRenta = "RENTA";
-    productos.push_back(producto17);
-
-    Producto producto18;
-    producto18.nombre = "Vela votivo/ch color (142ml/5.0oz)";
-    producto18.origen = "WO";
-    producto18.precio = 17;
-    producto18.idConsecutivo = proximoIdConsecutivo++;
-    producto18.disponibilidad = 3;
-    producto18.tipoRenta = "RENTA";
-    productos.push_back(producto18);
-
-    Producto producto19;
-    producto19.nombre = "Vela votivo/ch Rell color (142ml/5.0oz)";
-    producto19.origen = "WO";
-    producto19.precio = 14;
-    producto19.idConsecutivo = proximoIdConsecutivo++;
-    producto19.disponibilidad = 3;
-    producto19.tipoRenta = "RENTA";
-    productos.push_back(producto19);
-
-    Producto producto20;
-    producto20.nombre = "Cirio de mesa 5x6cm";
-    producto20.origen = "WO";
-    producto20.precio = 14;
-    producto20.idConsecutivo = proximoIdConsecutivo++;
-    producto20.disponibilidad = 3;
-    producto20.tipoRenta = "RENTA";
-    productos.push_back(producto20);
-
-    Producto producto21;
-    producto21.nombre = "Cirio de mesa 6.5x6cm";
-    producto21.origen = "WO";
-    producto21.precio = 20;
-    producto21.idConsecutivo = proximoIdConsecutivo++;
-    producto21.disponibilidad = 3;
-    producto21.tipoRenta = "RENTA";
-    productos.push_back(producto21);
-
-    Producto producto22;
-    producto22.nombre = "Cirio de mesa 7x6cm";
-    producto22.origen = "WO";
-    producto22.precio = 30;
-    producto22.idConsecutivo = proximoIdConsecutivo++;
-    producto22.disponibilidad = 3;
-    producto22.tipoRenta = "RENTA";
-    productos.push_back(producto22);
-
-    Producto producto23;
-    producto23.nombre = "Cirio de mesa 9x6cm";
-    producto23.origen = "WO";
-    producto23.precio = 25;
-    producto23.idConsecutivo = proximoIdConsecutivo++;
-    producto23.disponibilidad = 3;
-    producto23.tipoRenta = "RENTA";
-    productos.push_back(producto23);
-
-    Producto producto24;
-    producto24.nombre = "Cirio de mesa 10x6cm";
-    producto24.origen = "WO";
-    producto24.precio = 30;
-    producto24.idConsecutivo = proximoIdConsecutivo++;
-    producto24.disponibilidad = 3;
-    producto24.tipoRenta = "RENTA";
-    productos.push_back(producto24);
-
-    Producto producto25;
-    producto25.nombre = "Cirio de mesa 10x10cm";
-    producto25.origen = "WO";
-    producto25.precio = 35;
-    producto25.idConsecutivo = proximoIdConsecutivo++;
-    producto25.disponibilidad = 3;
-    producto25.tipoRenta = "RENTA";
-    productos.push_back(producto25);
-    
-    
-    //Jalar los datos de una base de datos 
-    //(ULR LAptop/ EXCEL =   )
-    
-}
-
-void ListaClientes() {
-	
-		cout << "Listado de Clientes:" << endl;
-		cout << left << setw(5) << "ID"
-		<< setw (40) << "Nombre"
-        << setw (20) << "Apellido"
-        << setw (15) << "Telefono"<< endl;
-        
-		for (size_t i = 0; i < clientes.size(); ++i) {
-		cout << left << setw(5) << clientes[i].id
-		    << setw (40) << clientes[i].nombre
-            << setw (20) << clientes[i].apellido
-            << setw (15) << clientes[i].telefono << endl;
-
-    }
-    cout << "Presione cualquier tecla para continuar." << endl;
-    cin.ignore();
-    cin.get();
-
-}
-
-void AgregarCliente() {
-    Cliente nuevoCliente;
-    cout << "Nombre: ";
-    cin >> nuevoCliente.nombre;
-    cout << "Apellido: ";
-    cin >> nuevoCliente.apellido;
-    cout << "Telefono: ";
-    cin >> nuevoCliente.telefono;
-    nuevoCliente.id = folio++;
-    clientes.push_back(nuevoCliente);
-    cout << "Cliente agregado exitosamente." << endl;
-    cout << "Presione cualquier tecla para continuar." << endl;
-    cin.ignore();
-    cin.get();
-}
- void  cotizar() {
- 	//declaracion de variable
- 	double precioUnitario;
+class Pedido {
+public:
+    int id;
+    string fecha;
+    string nombreApellido;
+    string nombrePedidoCliente;
+    string estatus;
     int cantidad;
-    double subtotal, impuestos, total;
-    double porcentajeImpuestos = 0.16;  // Por ejemplo, impuestos del 16%
+    string nombreProducto;
+    double precio;
+    double monto;
+    double total;
+};
 
-    // Solicitar datos al usuario
-    cout << "Ingrese el precio unitario del producto: ";
-    cin >> precioUnitario;
+vector<Pedido> pedidos; // Variable global para almacenar pedidos
 
-    cout << "Ingrese la cantidad de productos: ";
-    cin >> cantidad;
-
-    // Calcular subtotal
-    subtotal = precioUnitario * cantidad;
-
-    // Calcular impuestos
-    impuestos = subtotal * porcentajeImpuestos;
-
-    // Calcular total
-    total = subtotal + impuestos;
-
-    // Mostrar resultados
-    cout << "\nResumen de la cotizacion:" << endl;
-    cout << "--------------------------" << endl;
-    cout << "Precio unitario: $" << precioUnitario << endl;
-    cout << "Cantidad: " << cantidad << endl;
-    cout << "Subtotal: $" << subtotal << endl;
-    cout << "Impuestos (16%): $" << impuestos << endl;
-    cout << "--------------------------" << endl;
-    cout << "TOTAL: $" << total << endl;
-    
-    cout << "Presione cualquier tecla para continuar." << endl;
-    cin.ignore();
-    cin.get();
- }
-
-void GestionarClientes() {
-    cout << "Gestion de Clientes:" << endl;
-    cout << "1. Lista Clientes" << endl;
-    cout << "2. Agregar Cliente" << endl;
-    cout << "Seleccione una opcion: ";
-    int opcion;
-    cin >> opcion;
-    cin.ignore();//limpiar buffer
-    switch (opcion) {
-        case 1:
-            ListaClientes();
-            break;
-        case 2:
-            AgregarCliente();
-            break;
-        default:
-            cout << "Opcion no valida." << endl;
-            break;
+void ListarPedidos() {
+    ifstream archivo("PEDIDOS.txt");
+    string linea;
+    while (getline(archivo, linea)) {
+        cout << linea << endl;
     }
+    archivo.close();
 }
 
-void ListarProductos() {
-	cout << "Listado de Productos:" << endl;
-    cout << left << setw(7) << "ID"
-         << setw(40) << "Nombre"
-         << setw(20) << "Origen"
-         << setw(10) << "Precio"
-         << setw(15) << "Disponibilidad"
-         << setw(10) << "Tipo Renta" << endl;
+void GuardarPedidoEnArchivo(const Pedido& pedido) {
+    ofstream archivo("PEDIDOS.txt", ios::app);
+    archivo << pedido.id << " | " << pedido.fecha << " | " << pedido.nombreApellido 
+            << " | " << pedido.nombrePedidoCliente << " | " << pedido.estatus 
+            << " | " << pedido.cantidad << " | " << pedido.nombreProducto 
+            << " | " << pedido.precio << " | " << pedido.monto << " | " << pedido.total << endl;
+    archivo.close();
+}
 
-    for (size_t i = 0; i < productos.size(); ++i) {
-        cout << left << setw(7) << productos[i].idConsecutivo
-             << setw(40) << productos[i].nombre
-             << setw(20) << productos[i].origen
-             << setw(10) << productos[i].precio
-             << setw(15) << productos[i].disponibilidad
-             << setw(10) << productos[i].tipoRenta << endl;
+void LevantarPedido() {
+    Pedido nuevoPedido;
+    char agregarOtroProducto;
 
-    }
-    cout << "Presione cualquier tecla para continuar." << endl;
+    cout << "Ingrese la fecha: ";
+    cin >> nuevoPedido.fecha;
+    cout << "Ingrese el nombre y apellido: ";
     cin.ignore();
-    cin.get();
+    getline(cin, nuevoPedido.nombreApellido);
+    cout << "Ingrese el nombre del pedido cliente: ";
+    getline(cin, nuevoPedido.nombrePedidoCliente);
+    nuevoPedido.estatus = "En Proceso";
+    nuevoPedido.total = 0;
+
+    do {
+        cout << "Ingrese la cantidad: ";
+        cin >> nuevoPedido.cantidad;
+        cout << "Ingrese el nombre del producto: ";
+        cin.ignore();
+        getline(cin, nuevoPedido.nombreProducto);
+        cout << "Ingrese el precio: ";
+        cin >> nuevoPedido.precio;
+
+        nuevoPedido.monto = nuevoPedido.cantidad * nuevoPedido.precio;
+        nuevoPedido.total += nuevoPedido.monto;
+
+        nuevoPedido.id = (pedidos.empty()) ? 1 : pedidos.back().id + 1;
+        pedidos.push_back(nuevoPedido);
+
+        GuardarPedidoEnArchivo(nuevoPedido);
+
+        cout << "Producto agregado al pedido exitosamente.\n";
+        cout << "Monto actual del pedido: " << nuevoPedido.total << endl;
+
+        cout << "¿Desea agregar otro producto? (s/n): ";
+        cin >> agregarOtroProducto;
+
+    } while (agregarOtroProducto == 's' || agregarOtroProducto == 'S');
+
+    cout << "Pedido levantado exitosamente.\n";
+    cout << "Monto total del pedido: " << nuevoPedido.total << endl;
 }
 
-void AgregarProducto() {
-    Producto nuevoProducto;
-    cout << "Nombre: ";
-    cin >> nuevoProducto.nombre;
-    cout << "Origen: ";
-    cin >> nuevoProducto.origen;
-    cout << "Precio: ";
-    cin >> nuevoProducto.precio;
-    cout << "Disponibilidad: ";
-    cin >> nuevoProducto.disponibilidad;
-    cout << "Tipo Renta: ";
-    cin >> nuevoProducto.tipoRenta;
-    nuevoProducto.idConsecutivo = proximoIdConsecutivo++;
-    productos.push_back(nuevoProducto);
-    cout << "Producto agregado exitosamente." << endl;
-    cout << "Presione cualquier tecla para continuar." << endl;
-    cin.ignore();
-    cin.get();
+bool AutenticarUsuario() {
+    string usuario, contrasena;
+    cout << "Ingrese su usuario: ";
+    cin >> usuario;
+    cout << "Ingrese su contrasena: ";
+    cin >> contrasena;
+    return (usuario == "isaac" && contrasena == "123");
 }
 
-void GestionarProductos() {
-    cout << "Gestion de Productos:" << endl;
-    cout << "1. Listar Productos" << endl;
-    cout << "2. Agregar Producto" << endl;
-    cout << "Seleccione una opcion: ";
-    int opcion;
-    cin >> opcion;
-    cin.ignore();//limpiar buffer
-    switch (opcion) {
-        case 1:
-            ListarProductos();
-            break;
-        case 2:
-            AgregarProducto();
-            break;
-        default:
-            cout << "Opcion no valida." << endl;
-            break;
+void EsperarYLimpiarPantalla() {
+    cout << "Presione cualquier tecla para continuar...";
+    cin.ignore().get(); // Espera hasta que se presione una tecla
+    system("cls"); // Para Windows
+    // system("clear"); // Para Unix/Linux
+}
+
+void MostrarMenuPrincipal();
+void MostrarMenuClientes();
+void MostrarMenuProductos();
+void MostrarMenuPedidos();
+void MostrarMenuVentas();
+void MostrarMenuCotizacion();
+
+void ListarClientes();
+void AgregarCliente();
+void ListarProductos();
+void AgregarProducto();
+void ModificarPedido();
+void ListarVentas();
+void ModificarVenta();
+void generarCotizacion(); // Corregida
+
+int main() {
+    if (!AutenticarUsuario()) {
+        cout << "Usuario o contrasena incorrecta." << endl;
+        return 1;
     }
-}
-
-void MostrarPedido() {
-    cout << "Funcionalidad de realizar un pedido no implementada." << endl;
-    cout << "Presione cualquier tecla para continuar." << endl;
-    cin.ignore();
-    cin.get();
-}
-
-void MostrarVentas() {
-    cout << "Listado de Ventas:" << endl;
-    cout << "ID   Cliente             Producto                           Cantidad   Precio Total" << endl;
-    for (size_t i = 0; i < ventas.size(); ++i) {
-        cout << ventas[i].folio << "    " << ventas[i].cliente.nombre << " " << ventas[i].cliente.apellido << "       " << ventas[i].producto.nombre << "     " << ventas[i].cantidad << "     " << ventas[i].precioTotal << endl;
-    }
-    cout << "Presione cualquier tecla para continuar." << endl;
-    cin.get();
-    cin.get();
+    EsperarYLimpiarPantalla();
+    MostrarMenuPrincipal();
+    return 0;
 }
 
 void MostrarMenuPrincipal() {
-    // Obtener el tamaño de la consola
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    int anchoConsola;
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    anchoConsola = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-
-    // El texto principal del menú
-    const char* menuTitle = "__________Menu:_________";
-    int titleLength = strlen(menuTitle);
-    
-    // Calcular el espacio de relleno para centrar el título del menú
-    int padding = (anchoConsola - titleLength) / 2;
-    string paddingSpaces = string(padding, ' ');
-
-    // Imprimir el título del menú centrado
-    cout << paddingSpaces << menuTitle << endl;
-
-    // Imprimir las opciones del menú con el mismo padding para alinear a la izquierda
-    cout << paddingSpaces << "1. Clientes" << endl;
-    cout << paddingSpaces << "2. Productos" << endl;
-    cout << paddingSpaces << "3. Realizar Pedido" << endl;
-    cout << paddingSpaces << "4. Ventas" << endl;
-    cout << paddingSpaces << "5. cotizacion" << endl;
-    cout << paddingSpaces << "6. Salir" << endl;
-    cout << paddingSpaces << "Seleccione una opcion, por favor: ";
-}
-
-int main() {
-	
-	
-    InicializarProductos();
-
-    bool autenticado = false;
-
-    while (!autenticado) {
-    	system("CLS");
-        cout << "Por favor, inicie sesion." << endl;
-        cout << "Usuario: ";
-        string usuario;
-        cin >> usuario;
-        cout << "Contrasena: ";
-        string contrasena;
-        cin >> contrasena;
-
-        if (usuario == usuarioAdmin && contrasena == contrasenaAdmin) {
-            autenticado = true;
-            cout << "Inicio de sesion exitoso." << endl;
-            cout << "Presione cualquier tecla para continuar." << endl;
-            cin.get();
-            cin.get();
-        } else {
-            cout << "Usuario o contrasena incorrectos. Intente nuevamente." << endl;
-            cout << "Datos incorrectos, vuelva a intentarlo" << endl;
-            cin.get();
-            cin.get();
-        }
-
-        cout << " INICIO DE SECION ACTIVADA "; // Limpiar pantalla
-    }
-
-    bool salir = false;
-
-    while (!salir) {
-    	system("CLS");
-        MostrarMenuPrincipal();
-        char opcion;
+    int opcion;
+    do {
+        cout << "__________Menu:_________" << endl;
+        cout << "1. Clientes" << endl;
+        cout << "2. Productos" << endl;
+        cout << "3. Pedidos" << endl;
+        cout << "4. Ventas" << endl;
+        cout << "5. Cotizacion" << endl;
+        cout << "6. Salir" << endl;
+        cout << "Seleccione una opcion, por favor: ";
         cin >> opcion;
-        cin.ignore();//limpias buffer
-        cout << endl;
 
-        switch (opcion) {
-            case '1':
-                GestionarClientes();
+        switch(opcion) {
+            case 1:
+                MostrarMenuClientes();
                 break;
-            case '2':
-                GestionarProductos();
+            case 2:
+                MostrarMenuProductos();
                 break;
-            case '3':
-                MostrarPedido();
+            case 3:
+                MostrarMenuPedidos();
                 break;
-            case '4':
-                MostrarVentas();
+            case 4:
+                MostrarMenuVentas();
                 break;
-            case '5':
-                cotizar();
+            case 5:
+                MostrarMenuCotizacion();
                 break;
-            case '6':
-                salir = true;
+            case 6:
+                cout << "Saliendo del programa..." << endl;
                 break;
             default:
-                cout << "Opcion no valida." << endl;
+                cout << "Opcion no valida, intente nuevamente." << endl;
+        }
+        EsperarYLimpiarPantalla();
+    } while (opcion != 6);
+}
+
+void MostrarMenuClientes() {
+    int opcion;
+    do {
+        cout << "__________Menu Clientes:_________" << endl;
+        cout << "1. Lista de Clientes" << endl;
+        cout << "2. Agregar Cliente" << endl;
+        cout << "3. Regresar al menu principal" << endl;
+        cout << "Seleccione una opcion, por favor: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                ListarClientes();
+                break;
+            case 2:
+                AgregarCliente();
+                break;
+            case 3:
+                return;
+            default:
+                cout << "Opcion no valida, intente nuevamente." << endl;
+        }
+        EsperarYLimpiarPantalla();
+    } while (opcion != 3);
+}
+
+void MostrarMenuProductos() {
+    int opcion;
+    do {
+        cout << "__________Menu Productos:_________" << endl;
+        cout << "1. Lista de Productos" << endl;
+        cout << "2. Agregar Producto" << endl;
+        cout << "3. Regresar al menu principal" << endl;
+        cout << "Seleccione una opcion, por favor: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                ListarProductos();
+                break;
+            case 2:
+                AgregarProducto();
+                break;
+            case 3:
+                return;
+            default:
+                cout << "Opcion no valida, intente nuevamente." << endl;
+        }
+        EsperarYLimpiarPantalla();
+    } while (opcion != 3);
+}
+
+void MostrarMenuPedidos() {
+    int opcion;
+    do {
+        cout << "__________Menu Pedidos:_________" << endl;
+        cout << "1. Lista de Pedidos" << endl;
+        cout << "2. Levantar Pedido" << endl;
+        cout << "3. Modificar Pedido" << endl;
+        cout << "4. Regresar al menu principal" << endl;
+        cout << "Seleccione una opcion, por favor: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                ListarPedidos();
+                break;
+            case 2:
+                LevantarPedido();
+                break;
+            case 3:
+                ModificarPedido();
+                break;
+            case 4:
+                return;
+            default:
+                cout << "Opcion no valida, intente nuevamente." << endl;
+        }
+        EsperarYLimpiarPantalla();
+    } while (opcion != 4);
+}
+
+void MostrarMenuVentas() {
+    int opcion;
+    do {
+        cout << "__________Menu Ventas:_________" << endl;
+        cout << "1. Lista de Ventas" << endl;
+        cout << "2. Modificar Venta" << endl;
+        cout << "3. Regresar al menu principal" << endl;
+        cout << "Seleccione una opcion, por favor: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                ListarVentas();
+                break;
+            case 2:
+                ModificarVenta();
+                break;
+            case 3:
+                return;
+            default:
+                cout << "Opcion no valida, intente nuevamente." << endl;
+        }
+        EsperarYLimpiarPantalla();
+    } while (opcion != 3);
+}
+
+void MostrarMenuCotizacion() {
+    int opcion;
+    do {
+        cout << "Menu principal:" << endl;
+        cout << "1. Generar cotizacion" << endl;
+        cout << "2. Otra opcion del menú" << endl;
+        cout << "3. Salir" << endl;
+        cout << "Seleccione una opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                generarCotizacion(); // Llamar a la función para generar la cotización
+                break;
+            case 2:
+                // Otra opción del menú
+                break;
+            case 3:
+                cout << "Saliendo del programa..." << endl;
+                break;
+            default:
+                cout << "Opción no válida. Intente de nuevo." << endl;
                 break;
         }
+
+    } while (opcion != 3);
+}
+
+void ListarClientes() {
+    ifstream archivo("clientes.txt");
+    string linea;
+    while (getline(archivo, linea)) {
+        cout << linea << endl;
     }
-    return 0;
+    archivo.close();
+}
+
+void AgregarCliente() {
+    ofstream archivo("clientes.txt", ios::app);
+    Cliente nuevoCliente;
+    cout << "Ingrese el nombre del cliente: ";
+    cin >> nuevoCliente.nombre;
+    cout << "Ingrese el apellido del cliente: ";
+    cin >> nuevoCliente.apellido;
+    cout << "Ingrese el domicilio del cliente: ";
+    cin >> nuevoCliente.domicilio;
+    cout << "Ingrese el municipio del cliente: ";
+    cin >> nuevoCliente.municipio;
+    cout << "Ingrese el estado del cliente: ";
+    cin >> nuevoCliente.estado;
+    cout << "Ingrese el telefono del cliente: ";
+    cin >> nuevoCliente.telefono;
+    cout << "Ingrese el ID del cliente: ";
+    cin >> nuevoCliente.id;
+    cout << "Ingrese el RFC del cliente: ";
+    cin >> nuevoCliente.RFC;
+    cout << "Ingrese el tipo del cliente: ";
+    cin >> nuevoCliente.tipo;
+    archivo << nuevoCliente.nombre << " | " << nuevoCliente.apellido << " | " 
+            << nuevoCliente.domicilio << " | " << nuevoCliente.municipio << " | "
+            << nuevoCliente.estado << " | " << nuevoCliente.telefono << " | "
+            << nuevoCliente.id << " | " << nuevoCliente.RFC << " | " 
+            << nuevoCliente.tipo << endl;
+    archivo.close();
+}
+
+void ListarProductos() {
+    ifstream archivo("productos.txt");
+    string linea;
+    while (getline(archivo, linea)) {
+        cout << linea << endl;
+    }
+    archivo.close();
+}
+
+void AgregarProducto() {
+    ofstream archivo("productos.txt", ios::app);
+    Producto nuevoProducto;
+    cout << "Ingrese el nombre del producto: ";
+    cin >> nuevoProducto.nombre;
+    cout << "Ingrese el origen del producto: ";
+    cin >> nuevoProducto.origen;
+    cout << "Ingrese el precio del producto: ";
+    cin >> nuevoProducto.precio;
+    cout << "Ingrese el ID consecutivo del producto: ";
+    cin >> nuevoProducto.idConsecutivo;
+    cout << "Ingrese la disponibilidad del producto: ";
+    cin >> nuevoProducto.disponibilidad;
+    cout << "Ingrese el tipo del producto: ";
+    cin >> nuevoProducto.tipo;
+    archivo << nuevoProducto.nombre << " | " << nuevoProducto.origen << " | " 
+            << nuevoProducto.precio << " | " << nuevoProducto.disponibilidad 
+            << " | " << nuevoProducto.tipo << endl;
+    archivo.close();
+}
+
+void ModificarPedido() {
+    int id;
+    string nuevoEstatus;
+
+    cout << "Ingrese el ID del pedido a modificar: ";
+    cin >> id;
+
+    cout << "Ingrese el nuevo estatus del pedido: ";
+    cin >> nuevoEstatus;
+
+    for (size_t i = 0; i < pedidos.size(); ++i) {
+        if (pedidos[i].id == id) {
+            pedidos[i].estatus = nuevoEstatus;
+            cout << "Pedido modificado exitosamente.\n";
+            return;
+        }
+    }
+
+    cout << "Pedido no encontrado.\n";
+}
+
+void ListarVentas() {
+    ifstream archivo("ventas.txt");
+    string linea;
+    while (getline(archivo, linea)) {
+        cout << linea << endl;
+    }
+    archivo.close();
+}
+
+void ModificarVenta() {
+    // Implementación para modificar el estado de una venta
+}
+
+void generarCotizacion() {
+    int idCotizacion;
+    string nombreApellido;
+    string domicilio;
+    string municipio;
+    string estado;
+    string telefono;
+    vector<Producto> productos;
+
+    cout << "ID cotizacion: ";
+    cin >> idCotizacion;
+    cin.ignore(); // Limpiar el buffer de entrada
+
+    cout << "Nombre y Apellido: ";
+    getline(cin, nombreApellido);
+
+    cout << "DOMICILIO: ";
+    getline(cin, domicilio);
+
+    cout << "MUNICIPIO: ";
+    getline(cin, municipio);
+
+    cout << "ESTADO: ";
+    getline(cin, estado);
+
+    cout << "TELEFONO: ";
+    getline(cin, telefono);
+
+    cout << "(DESCRIPCION)" << endl;
+    cout << "//A continuación ponemos a su consideración la cotización de los productos que nos solicitó y quedamos a sus órdenes//" << endl;
+    cout << endl;
+
+    char continuar;
+    do {
+        Producto producto;
+        cout << "Producto #" << (productos.size() + 1) << ":" << endl;
+        cout << "Nombre del producto: ";
+        getline(cin, producto.nombre);
+
+        cout << "Cantidad: ";
+        cin >> producto.cantidad;
+
+        cout << "Precio unitario: ";
+        cin >> producto.precioUnitario;
+        cin.ignore(); // Limpiar el buffer de entrada después de leer el precio
+
+        productos.push_back(producto);
+
+        cout << "Agregar otro producto? (s/n): ";
+        cin >> continuar;
+        cin.ignore(); // Limpiar el buffer de entrada
+    } while (continuar == 's' || continuar == 'S');
+
+    double total = 0.0;
+    for (size_t i = 0; i < productos.size(); ++i) {
+        const Producto& producto = productos[i];
+        double monto = producto.cantidad * producto.precioUnitario;
+        total += monto;
+    }
+
+    string tiempoEntrega;
+    cout << "Tiempo de entrega: ";
+    getline(cin, tiempoEntrega);
+
+    ofstream archivo("cotizacion.txt");
+    if (archivo.is_open()) {
+        archivo << "ID cotizacion: " << idCotizacion << endl;
+        archivo << "Nombre y Apellido: " << nombreApellido << endl;
+        archivo << "DOMICILIO: " << domicilio << endl;
+        archivo << "MUNICIPIO: " << municipio << endl;
+        archivo << "ESTADO: " << estado << endl;
+        archivo << "TELEFONO: " << telefono << endl;
+        archivo << endl;
+        archivo << "(DESCRIPCION)" << endl;
+        archivo << "//A continuación ponemos a su consideración la cotización de los productos que nos solicitó y quedamos a sus órdenes//" << endl;
+        archivo << endl;
+        archivo << "------------------------------------------------------------------" << endl;
+        archivo << "| Cantidad | Nombre del producto   | Precio unitario | Monto     |" << endl;
+        archivo << "------------------------------------------------------------------" << endl;
+
+        for (size_t i = 0; i < productos.size(); ++i) {
+            const Producto& producto = productos[i];
+            double monto = producto.cantidad * producto.precioUnitario;
+            archivo << "| " << setw(9) << producto.cantidad << " | "
+                    << setw(21) << producto.nombre << " | "
+                    << setw(15) << fixed << setprecision(2) << producto.precioUnitario << " | "
+                    << setw(10) << monto << " |" << endl;
+        }
+
+        archivo << "----------------------------------------------------------------" << endl;
+        archivo << "TOTAL : " << setw(47) << total << endl;
+        archivo << endl;
+        archivo << "Tiempo de entrega: " << tiempoEntrega << endl;
+
+        cout << "La cotizacion ha sido guardada exitosamente en el archivo 'cotizacion.txt'." << endl;
+
+        archivo.close();
+    } else {
+        cout << "No se pudo abrir el archivo 'cotizacion.txt' para guardar la cotizacion." << endl;
+    }
 }
