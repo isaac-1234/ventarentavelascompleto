@@ -1,0 +1,6 @@
+ ID |      FECHA |             NOMBRE DEL CLIENTE |  C |  TOTAL |    ESTATUS | EST/COBZ | FolioFactura | OC CLIE |  C |       NOMBRE DEL PRODUCTO |  TOTAL
+  1 | 24-07-2024 |                          Luis  Rosete |  2 |  17750 | COMPLETADO |  PEGADO | GALA71HSPRGL |    gala |  2 | Juego de 10 cirios de piso |   5600
+  1 | 24-07-2024 |                          Luis  Rosete |  3 |  17750 | COMPLETADO |  PEGADO | GALA71HSPRGL |    gala |  3 | Juego de 15 cirios de piso |  12150
+  2 |          2 |               Michelle Pourroy       |  3 |  12150 | COMPLETADO |  PEGADO | GINLPHSPR2024 | GUSI2024 |  3 | Juego de 15 cirios de piso |  12150
+  3 | 24-07-2024 |           Capilla de Guadalupe        |  4 |  52050 | COMPLETADO |  PAGADO | GALAHSPRLW12 | AS242022 |  4 | Juego de 20 cirios de piso |  20800
+  3 | 24-07-2024 |           Capilla de Guadalupe        |  5 |  52050 | COMPLETADO |  PAGADO | GALAHSPRLW12 | AS242022 |  5 | Juego de 25 cirios de piso |  31250

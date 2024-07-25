@@ -1,0 +1,38 @@
+Nombre_producto                      |      Origen_Stock_WO_Compra | Precio  | Diponibilidad_Dias | Tipo_Venta_Renta
+----------------------------------------------------------------------------------------------------------------------------------
+Juego de 5 cirios de piso            |      Compra                 | 1450    | 3                  |  Renta
+Juego de 10 cirios de piso           |      Compra                 | 2800    | 3                  |  Renta
+Juego de 15 cirios de piso           |      Compra                 | 4050    | 3                  |  Renta
+Juego de 20 cirios de piso           |      Compra                 | 5200    | 3                  |  Renta
+Juego de 25 cirios de piso           |      Compra                 | 6250    | 3                  |  Renta
+Juego de 30 cirios de piso           |      Compra                 | 7200    | 3                  |  Renta
+Juego de 35 cirios de piso           |      Compra                 | 8050    | 3                  |  Renta
+Juego de 40 cirios de piso           |      Compra                 | 8800    | 3                  |  Renta
+Juego de 45 cirios de piso           |      Compra                 | 9450    | 3                  |  Renta
+Vela colgante grande                 |      WO                     | 28      | 3                  |  Renta
+Vela colgante chica                  |      WO                     | 18      | 3                  |  Renta
+Vela votivo/g(250ml/8.45oz)          |      Stock                  | 16      | 0                  |  Renta
+Vela votivo/g Re (250ml/8.45oz)     |      WO                     | 13      | 3                  |  Renta
+Vela votivo/ch(142ml/5.0oz)          |      Stock                  | 14      | 0                  |  Renta
+Vela votivo/ch Re(142ml/5.0oz)       |      WO                     | 11      | 3                  |  Renta
+Vela votivo/g color (250ml/8.45oz)   |      WO                     | 19      | 3                  |  Renta
+Vela votivo/g Re color(250ml/8.45oz) |      WO                     | 16      | 3                  |  Renta
+Vela votivo/ch color (142ml/5.0oz)   |      WO                     | 17      | 3                  |  Renta
+Vela votivo/ch Re color(142ml/5.0oz) |      WO                     | 14      | 3                  |  Renta
+Cirio de mesa 5x6cm                  |      WO                     | 14      | 3                  |  Renta
+Cirio de mesa 6.5x6cm                |      WO                     | 20      | 3                  |  Renta
+Cirio de mesa 7x6cm                  |      WO                     | 30      | 3                  |  Renta
+Cirio de mesa 7x10cm                 |      WO                     | 39      | 3                  |  Renta
+Cirio de mesa 7x12cm                 |      WO                     | 43      | 3                  |  Renta
+Cirio de mesa 7x14cm                 |      WO                     | 46      | 3                  |  Renta
+Vela flotante 4.5x2.5 cm             |      WO                     | 11      | 3                  |  Venta
+Vela flotante 7x2.5 cm               |      WO                     | 18      | 3                  |  Venta
+Vela flotante 12x2.5 cm              |      WO                     | 22      | 3                  |  Venta
+Vela larga conica Beige 42 cm        |      WO                     | 26      | 3                  |  Venta
+Vela larga conica Color 42 cm        |      WO                     | 29      | 3                  |  Venta
+Vela larga conica Beige 22 cm        |      WO                     | 15      | 3                  |  Venta
+Vela larga conica Color 22 cm        |      WO                     | 18      | 3                  |  Venta
+Vela floral artesanal 30cm           |      WO                     | 300     | 3                  |  Venta
+Vela floral artesanal 25cm           |      WO                     | 250     | 3                  |  Venta
+Vela floral artesanal 20cm           |      WO                     | 220     | 3                  |  Venta
+

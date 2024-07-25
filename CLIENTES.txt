@@ -1,0 +1,32 @@
+ID |Nombre                        |Apellidos  | Domicilio                     | Municipio             Estado       | Telefono   | RFC |Tipo
+1  |Bellaterra Salon deventos     |           |Av.Naciones Unidas 8600        |San Juan de Ocotan    Jalisco       |3336416380  |     |     |Recurrente
+2  |Luis                          |Rosete     |                               |Zapopan               Jalisco       |3313410747  |     |     |Recurrente
+3  |Michelle                      |Pourroy    |                               |Zapopan               Jalisco       |3323437579  |     |     |Recurrente
+4  |Capilla de Guadalupe          |           |Tepatitlan de Morelos          |Jalisco                             |3787828033  |     |     |Nuevo
+5  |Fabiola                       |Ruiz Barba |                               |Guadalajara           Jalisco       |3311554981  |     |     |Nuevo
+6  |Michelle                      |Mendez     |                               |Zapopan               Jalisco       |3331577577  |     |     |Recurrente
+7  |La Gotera Salon de Eventos    |           |Jilgueros 77                   |La Venta del AstilleroJalisco       |3327898280  |     |     |Recurrente
+8  |Valeria                       |Navarro    |                               |Guadalajara           Jalisco       |3313009393  |     |     |Nuevo
+9  |La Bendita Espacio Eventos    |           |Circunvalacion del Bosque 2001 |Zapopan               Jalisco       |3328338832  |     |     |Recurrente
+10 |Quinta Marina Salon Eventos   |           |Av. Serafin Vazquez E 619      |Cd. Guzman            Jalisco       |3411123842  |     |     |Recurrente
+11 |Banana Production             |           |                               |Guadalajara           Jalisco       |3318501281  |     |     |Recurrente
+12 |Alejandro                     |Duarte     |                               |Zapopan               Jalisco       |3321595786  |     |     |Recurrente
+13 |Fraida                        |Valle      |                               |Zapopan               Jalisco       |3318932335  |     |     |Nuevo
+14 |Entre Flores                  |           |                               |Chihuahua             Chihuahua     |6141279112  |     |     |Recurrente
+15 |Naviva                        |           |Carr. Federal 200, Km.19.5     |Punta Mita            Nayarit       |3292916100  |     |     |Nuevo
+16 |Andrea                        |Escamilla  |                               |Zapopan               Jalisco       |3321836603  |     |     |Nuevo
+17 |Maricruz                      |Elizondo   |                               |Los Mochis            Sinaloa       |3316999403  |     |     |Nuevo
+18 |Art & Flowers                 |           |                               |Zapopan               Jalisco       |3331798990  |     |     |Nuevo
+19 |Benavento Salon de Eventos    |           |Lopez Mateos Sur 2550          |Tlajomulco de Zuniga  Jalisco       |3331885845  |     |     |Recurrente
+20 |Entre Flores                  |           |                               |Cancun                Quintana Roo  |9983182595  |     |     |Recurrente
+21 |Benazuza                      |           |Boulevard Kukulcan km 16.5     |Cancun                Quintana Roo  |9986424573  |     |     |Recurrente
+22 |Lago del Rey                  |           |                               |Zapopan               Jalisco       |3331655873  |     |     |Recurrente
+23 |Tizate Sea Garden             |           |Camino al Tizate 4             |Cruz de Huanacaxtle   Nayarit       |3222205348  |     |     |Recurrente
+24 |Rancho La Razon               |           |                               |Guadalajara           Jalisco       |3318432366  |     |     |Recurrente
+25 |Banquetes La Benazuza         |           |Administradores 5376           |Zapopan               Jalisco       |3331650590  |     |     |Recurrente
+26 |Terrabambino                  |           |Toscana SN                     |Zapopan               Jalisco       |3331106318  |     |     |Recurrente
+27 |Florida Eventos               |           |Av. 5 de mano 6601             |San Juan de Ocotan    Jalisco       |3336821130  |     |     |Recurrente
+28 |La Escoba                     |           |Carr. Colotran Km 1.7          |Zapopan               Jalisco       |3338971775  |     |     |Nuevo
+29 | ANTONIO | GARCIA  | NETZAUALCOYOTL  | SAN LUIS POTOSI | SAN LUIS POTOSI | 4442431232 | GAMA7103212 | NUEVO
+30 | JOSE | MARTINEZ | PV.CENTRAL | SAN LUIS POTOSI | SAN LUIS POTOSI | 44423312 | JMATHSPRLM | NUEVO
+31 | EDUARDO | MORENO | AGUASCALIENTES 1021 | AGUAASCALIENTES | AGUASCALIANTES | 44443123112 | EMDHSPRLMN | NUEVO

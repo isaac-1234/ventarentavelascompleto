@@ -1,0 +1,19 @@
+ID cotizacion: 1
+Nombre y Apellido: Quinta Marina Salon Eventos Evento
+DOMICILIO: Av. Serafin Vazquez E 619
+MUNICIPIO: Cd. Guzman
+ESTADO: Jalisco
+TELEFONO: 3411123842
+
+(DESCRIPCION)
+//A continuación ponemos a su consideración la cotización de los productos que nos solicitó y quedamos a sus órdenes//
+
+------------------------------------------------------------------
+| Cantidad | Nombre del producto   | Precio unitario | Monto     |
+------------------------------------------------------------------
+|        20 | Vela votivo/g (250ml/8.45oz) |           16.00 |     320.00 |
+|        15 | Juego de 10 cirios de piso |         2800.00 |   42000.00 |
+----------------------------------------------------------------
+TOTAL :                                        42320.00
+
+Tiempo de entrega: 3 A 4 DIAS
